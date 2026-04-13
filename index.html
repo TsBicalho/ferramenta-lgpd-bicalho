@@ -43,27 +43,71 @@
                         <i class="fa-solid fa-user-shield"></i>
                     </div>
                     <h1 class="glow-text">Análise de Maturidade LGPD</h1>
-                    <p class="subtitle">Descubra o nível de conformidade da sua empresa com a Lei Geral de Proteção de Dados e receba uma avaliação exclusiva diretamente do especialista.</p>
+                    <p class="subtitle">Descubra o nível de conformidade da sua empresa com a Lei Geral de Proteção de Dados e receba uma avaliação estratégica baseada nas normas da ANPD.</p>
                     
                     <div class="features-list">
                         <div class="feature-item">
-                            <i class="fa-solid fa-stopwatch text-accent"></i>
-                            <span>Apenas 3-5 minutos de duração</span>
+                            <i class="fa-solid fa-microscope text-accent"></i>
+                            <span>Diagnóstico em 7 Dimensões Técnicas</span>
                         </div>
                         <div class="feature-item">
                             <i class="fa-solid fa-chart-radar text-accent"></i>
-                            <span>Gráfico visual de 7 dimensões</span>
+                            <span>Gráfico de Risco Personalizado</span>
                         </div>
                         <div class="feature-item">
-                            <i class="fa-solid fa-lightbulb text-accent"></i>
-                            <span>Identifique falhas críticas</span>
+                            <i class="fa-solid fa-building-circle-check text-accent"></i>
+                            <span>Conformidade PME / Grandes Empresas</span>
                         </div>
                     </div>
                     
                     <button id="btn-start" class="btn btn-primary btn-large">
-                        <span>Iniciar Análise</span>
+                        <span>Iniciar Diagnóstico</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
+                    
+                    <div class="compliance-badges">
+                        <span title="Conformidade ANPD"><i class="fas fa-check-shield"></i> Critérios ANPD</span>
+                        <span title="Privacy by Design"><i class="fas fa-fingerprint"></i> Privacy by Design</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCREEN 1.5: PROFILE -->
+            <section id="screen-profile" class="screen hidden">
+                <div class="glass-card quiz-card">
+                    <div class="section-header">
+                        <span class="dimension-badge">Etapa Inicial</span>
+                        <h2>Perfil da Organização</h2>
+                    </div>
+                    <p class="subtitle">A LGPD possui exigências proporcionais. Vamos ajustar o diagnóstico para o seu modelo de negócio.</p>
+                    
+                    <div class="profile-form">
+                        <div class="input-group-vertical">
+                            <label for="profile-size">Porte da Empresa</label>
+                            <select id="profile-size" class="custom-select">
+                                <option value="me_epp">Micro ou Pequena Empresa (ME/EPP/Startup)</option>
+                                <option value="large">Média ou Grande Empresa</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group-vertical" style="margin-top: 1.5rem;">
+                            <label for="profile-sector">Setor de Atuação Principal</label>
+                            <select id="profile-sector" class="custom-select">
+                                <option value="general">Geral (Serviços/Comércio/Indústria)</option>
+                                <option value="health">Saúde / Bem-estar (Dados Sensíveis)</option>
+                                <option value="finance">Financeiro / Jurídico / Seguros</option>
+                                <option value="education">Educação (Dados de Menores)</option>
+                                <option value="tech">Tecnologia / Marketing / Vendas</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="quiz-controls" style="margin-top: 2rem;">
+                        <button id="btn-profile-next" class="btn btn-primary full-width">
+                            <span>Continuar para as Perguntas</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
             </section>
 
