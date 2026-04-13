@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Maturidade LGPD</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- HEADER -->
+        <header class="app-header">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Thiago Bicalho</span>
+            </div>
+            <div class="progress-container hidden" id="progress-container">
+                <div class="progress-text">Progresso <span id="progress-percentage">0%</span></div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <!-- SCREEN 1: WELCOME -->
+            <section id="screen-welcome" class="screen active">
+                <div class="glass-card welcome-card">
+                    <div class="icon-pulse">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <h1 class="glow-text">Análise de Maturidade LGPD</h1>
+                    <p class="subtitle">Descubra o nível de conformidade da sua empresa com a Lei Geral de Proteção de Dados e receba uma avaliação exclusiva diretamente do especialista.</p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <i class="fa-solid fa-stopwatch text-accent"></i>
+                            <span>Apenas 3-5 minutos de duração</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-chart-radar text-accent"></i>
+                            <span>Gráfico visual de 7 dimensões</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-lightbulb text-accent"></i>
+                            <span>Identifique falhas críticas</span>
+                        </div>
+                    </div>
+                    
+                    <button id="btn-start" class="btn btn-primary btn-large">
+                        <span>Iniciar Análise</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- SCREEN 2: QUIZ -->
+            <section id="screen-quiz" class="screen hidden">
+                <div class="glass-card quiz-card">
+                    <div class="question-header">
+                        <span class="dimension-badge" id="dimension-badge">Dimensão</span>
+                        <span class="question-counter" id="question-counter">1/15</span>
+                    </div>
+                    
+                    <h2 id="question-text" class="question-text">Pergunta vai aqui...</h2>
+                    
+                    <div id="options-container" class="options-container">
+                        <!-- Options injected by JS -->
+                    </div>
+                    
+                    <div class="quiz-controls">
+                        <button id="btn-prev" class="btn btn-secondary" disabled>
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>Anterior</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCREEN 3: CALCULATING -->
+            <section id="screen-calculating" class="screen hidden">
+                <div class="glass-card center-card">
+                    <div class="loader">
+                        <div class="loader-circle"></div>
+                        <i class="fa-solid fa-gears loader-icon"></i>
+                    </div>
+                    <h2>Analisando Resultados...</h2>
+                    <p>Processando suas respostas em nossos 7 índices de maturidade.</p>
+                </div>
+            </section>
+
+            <!-- SCREEN 4: RESULTS -->
+            <section id="screen-results" class="screen hidden">
+                <div class="results-layout">
+                    <div class="glass-card result-summary">
+                        <h2 class="glow-text">Resultado da Análise</h2>
+                        
+                        <div class="score-circle-container">
+                            <div class="score-circle" id="score-circle">
+                                <span class="score-number" id="final-score">0%</span>
+                            </div>
+                        </div>
+
+                        <div class="maturity-level">
+                            <h3>Nível: <span id="maturity-level-text" class="glow-text text-accent">Calculando</span></h3>
+                            <p id="maturity-description" class="text-light">...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card chart-card">
+                        <h3>Análise por Dimensão</h3>
+                        <div class="chart-container">
+                            <canvas id="radarChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card next-steps-card">
+                        <h3 class="gradient-text">Fale com o Especialista</h3>
+                        <p>Preencha os dados abaixo e clique em <b>Enviar Solicitação</b> para enviar os resultados diretamente ao meu WhatsApp para uma avaliação aprofundada. Se preferir, você também pode falar comigo diretamente.</p>
+                        
+                        <form id="lead-form" class="lead-form">
+                            <div class="input-group">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" id="lead-name" placeholder="Seu Nome Completo" required>
+                            </div>
+                            <div class="input-group">
+                                <i class="fa-solid fa-envelope"></i>
+                                <input type="email" id="lead-email" placeholder="E-mail Profissional" required>
+                            </div>
+                            <div class="input-group">
+                                <i class="fa-solid fa-building"></i>
+                                <input type="text" id="lead-company" placeholder="Nome da Empresa" required>
+                            </div>
+                            <div class="input-group">
+                                <i class="fa-solid fa-briefcase"></i>
+                                <input type="text" id="lead-role" placeholder="Cargo Funcional" required>
+                            </div>
+                            <div class="input-group">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <input type="tel" id="lead-phone" placeholder="Seu WhatsApp/Telefone" required>
+                            </div>
+                            <div class="input-group full-width">
+                                <textarea id="lead-message" placeholder="O que mais você gostaria de nos dizer e tirar dúvidas?" rows="3"></textarea>
+                            </div>
+                            
+                            <button type="submit" id="btn-submit-lead" class="btn btn-primary btn-large full-width">
+                                <span>Enviar Solicitação de Contato</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                        
+                        <div class="divider">
+                            <span>OU</span>
+                        </div>
+                        
+                        <button id="btn-direct-whatsapp" class="btn btn-whatsapp full-width">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Falar Direto no WhatsApp (11 99960-4342)</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="app-footer">
+            <p>&copy; 2026 Thiago Bicalho - Especialista LGPD. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
